@@ -1,11 +1,11 @@
 # Makefile for building luaproc
 
 # lua version
-LUA_VERSION=5.1
+LUA_VERSION=5.4
 # path to lua header files
-LUA_INCDIR=/usr/include/lua${LUA_VERSION}
+LUA_INCDIR=/usr/local/include
 # path to lua library
-LUA_LIBDIR=/usr/lib/x86_64-linux-gnu/
+LUA_LIBDIR=/usr/local/lib
 # path to install library
 LUA_CPATH=/usr/lib/lua/${LUA_VERSION}
 
@@ -18,7 +18,7 @@ CFLAGS=-c -O2 -Wall -fPIC -I${LUA_INCDIR}
 # LIBFLAG=-bundle -undefined dynamic_lookup
 LIBFLAG=-shared
 #
-LDFLAGS=${LIBFLAG} -L${LUA_LIBDIR} -lpthread 
+LDFLAGS=${LIBFLAG} -L${LUA_LIBDIR} -lpthread -llua
 SOURCES=${SRCDIR}/lpsched.c ${SRCDIR}/luaproc.c
 OBJECTS=${SOURCES:.c=.o}
 

@@ -17,7 +17,10 @@
 #define TRUE  !FALSE
 #define LUAPROC_SCHED_WORKERS_TABLE "workertb"
 
-#if (LUA_VERSION_NUM >= 502)
+#if (LUA_VERSION_NUM >= 504)
+int _nres;
+#define luaproc_resume( L, from, nargs ) lua_resume( L, from, nargs, &_nres)
+#elif (LUA_VERSION_NUM >= 502)
 #define luaproc_resume( L, from, nargs ) lua_resume( L, from, nargs )
 #else
 #define luaproc_resume( L, from, nargs ) lua_resume( L, nargs )
