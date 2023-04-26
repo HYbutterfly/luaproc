@@ -921,7 +921,7 @@ static void luaproc_openlualibs( lua_State *L ) {
 
 }
 
-LUALIB_API int luaopen_luaproc( lua_State *L ) {
+LUALIB_API int luaopen_luaproc_core( lua_State *L ) {
 
   /* register luaproc functions */
   luaL_newlib( L, luaproc_funcs );

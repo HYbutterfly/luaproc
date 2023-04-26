@@ -1,4 +1,4 @@
-local core = require "luaproc"
+local core = require "luaproc.core"
 
 
 local luaproc = setmetatable({}, {__index = core})
