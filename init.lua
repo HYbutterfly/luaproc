@@ -1,7 +1,7 @@
 local core = require "luaproc"
 
 
-local luaproc = setmetatbale({}, {__index = core})
+local luaproc = setmetatable({}, {__index = core})
 
 
 function luaproc.newproc(filename)
