@@ -352,6 +352,9 @@ static int luaproc_copyvalues( lua_State *Lfrom, lua_State *Lto ) {
   /* test each value's type and, if it's supported, copy value */
   for ( i = 2; i <= n; i++ ) {
     switch ( lua_type( Lfrom, i )) {
+      case LUA_TLIGHTUSERDATA:
+        lua_pushlightuserdata(Lto, lua_touserdata(Lfrom, i));
+        break;
       case LUA_TBOOLEAN:
         lua_pushboolean( Lto, lua_toboolean( Lfrom, i ));
         break;
@@ -435,6 +438,9 @@ static int luaproc_copyupvalues( lua_State *Lfrom, lua_State *Lto,
   /* test the type of each upvalue and, if it's supported, copy it */
   while ( lua_getupvalue( Lfrom, funcindex, i ) != NULL ) {
     switch ( lua_type( Lfrom, -1 )) {
+      case LUA_TLIGHTUSERDATA:
+        lua_pushlightuserdata(Lto, lua_touserdata(Lfrom, -1));
+        break;
       case LUA_TBOOLEAN:
         lua_pushboolean( Lto, lua_toboolean( Lfrom, -1 ));
         break;
